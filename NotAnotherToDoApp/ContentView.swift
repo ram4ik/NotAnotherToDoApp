@@ -40,7 +40,11 @@ struct ContentView: View {
                     })
                 }
             })
-        }.sheet(item: $modalType) { $0 }
+        }
+        .sheet(item: $modalType) { $0 }
+        .alert(item: $dataStore.appError) { appError in
+            Alert(title: Text("Oh Oh"), message: Text(appError.error.localizedDescription))
+        }
     }
 }
 
